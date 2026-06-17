@@ -37,6 +37,23 @@ export const getExternalBooks = async (req, res) => {
     try {
         const books = await externalBooksService.searchBooksInApi(query);
         res.json(books);
+        console.log("Books fetched from external API.");
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error fetching books" });
+    }
+}
+//get external books by id api/books/books/search/:bookname/:bookById
+export const getExternalBooksByIDAndAddToLibrary = async (req, res) => {
+    const bookname = req.params.bookname;
+    const bookById = req.params.bookById;
+    try {
+        const book = await externalBooksService.searchBooksInApiByID(bookname, bookById);
+        if (!book) {
+            return res.status(404).json({ message: "Book not found in external API" });
+        }
+        booksDal.addBook(book);
+        res.json({ message: "Book added to library successfully", book: book });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Error fetching books" });

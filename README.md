@@ -7,8 +7,8 @@ ID: 202300671
     BookVerse is a Node.js/Express application that serves as a personal book database. It allows you to manage a local library of books (using an in-memory Data Access Layer) and integrates with the external Open Library API to search for and download real book data from the internet.
 
 How to run:
-Run -> npm install (or npm i)
-Start server -> npm start (or npm run dev)
+Step 1: Run -> npm install (or npm i)
+Step 2: Start server -> npm start (or npm run dev)
 NOTE: if no port is specified in the .env file, the server will start on port 5001 by default
 
 Usage examples:
@@ -24,6 +24,9 @@ Get:
 - External Api Search:
     url = ~/search/:query
     Example Request: `http://localhost:5001/api/books/search/harrypotter`
+- External Api Search by id and add to library:
+    url = ~/search/:bookname/:bookById
+    Example Request: `http://localhost:5001/api/books/search/batman/OL2897789W`
 
 Post:
 -Add book to local library:

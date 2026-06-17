@@ -5,6 +5,7 @@ const router = Router();
 
 router.get("/", booksController.getAllBooks);
 router.get("/search/:query", booksController.getExternalBooks);
+router.get("/search/:bookname/:bookById", booksController.getExternalBooksByIDAndAddToLibrary);
 router.get("/:id", booksController.getBookById);
 router.post("/", booksController.addBook);
 router.put("/:id", booksController.updateBook);
