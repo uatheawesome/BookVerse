@@ -1,6 +1,16 @@
-const Local_Library = [];
+const initialBook = {
+    "id": "OL82563W",
+    "title": "Harry Potter and the Philosopher's Stone",
+    "author": "J. K. Rowling",
+    "ebook_access": "borrowable",
+    "year": 1997,
+    "language": ["bul", "ukr", "por", "lat", "lav", "spa", "nor", "hin", "heb", "alb", "urd", "eng", "yid", "gla", "ltz", "gle"],
+    "coverImage": "https://covers.openlibrary.org/b/id/15155833-M.jpg"
+}
+const Local_Library = [initialBook];
 
-//function initLibrary() { thisBook= Local_Library.push(thisBook); }
+
+
 function getAllBooks() { return Local_Library; }
 function getBookById(id) { return Local_Library.find(book => book.id === id) }
 function addBook(book) { Local_Library.push(book); }
