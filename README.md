@@ -43,4 +43,6 @@ Delete:
     url = ~/:id
     Example Request: `http://localhost:5001/api/books/OL82563W`
 
-
+Gui: 
+search.html -> for searching and adding books (http://localhost:5001/search.html)
+mylib.html -> for viewing and deleting books (http://localhost:5001/mylib.html)
