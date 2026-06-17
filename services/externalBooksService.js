@@ -32,7 +32,7 @@ async function searchBooksInApi(bookName) {
         const url = createApiUrl(bookName);
         const response = await fetch(url);
         const books = await response.json();
-        const first10books = books.docs.slice(0, 10);// limiting the response to 10 books
+        const first10books = books.docs.slice(0, 25);// limiting the response to 25books
         console.log(first10books);
         const extractedBooks = first10books.map(book => {
             return {
