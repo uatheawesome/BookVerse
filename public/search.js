@@ -17,7 +17,7 @@ async function searchBooks() {
                 <p>Published: ${book.year}</p>
                 ${coverHtml}
                 <br>
-                <button id="color-button" onclick="addBook('${query}', '${book.id}')">Add to Library</button>
+                <button id="btn-${book.id}" class="color-button" onclick="addBook('${query}', '${book.id}')">Add to Library</button>
                 <hr>
             `;
             resultsDiv.appendChild(bookElement);
@@ -36,12 +36,12 @@ async function addBook(query, bookId) {
 
         if (response.ok) {
             document.getElementById('resultMessage').innerHTML = "Book added successfully!";
-            buttonGreen();
-            setTimeout(clearresultMessage, 2000);
+            buttonGreen(bookId);
+            setTimeout(() => clearresultMessage(bookId), 2000);
         } else {
             document.getElementById('resultMessage').innerHTML = "Failed: " + result.message;
-            buttonRed();
-            setTimeout(clearresultMessage, 2000);
+            buttonRed(bookId);
+            setTimeout(() => clearresultMessage(bookId), 2000);
         }
         console.log(result);
     } catch (error) {
@@ -50,19 +50,19 @@ async function addBook(query, bookId) {
     }
 }
 
-function clearresultMessage() {
+function clearresultMessage(bookId) {
     document.getElementById('resultMessage').innerHTML = "";
-    buttonDefaultColor();
+    buttonDefaultColor(bookId);
 }
-function buttonGreen() {
-    const button = document.getElementById('color-button');
-    button.style.backgroundColor = "green";
+function buttonGreen(bookId) {
+    const button = document.getElementById(`btn-${bookId}`);
+    if (button) button.style.backgroundColor = "green";
 }
-function buttonRed() {
-    const button = document.getElementById('color-button');
-    button.style.backgroundColor = "red";
+function buttonRed(bookId) {
+    const button = document.getElementById(`btn-${bookId}`);
+    if (button) button.style.backgroundColor = "red";
 }
-function buttonDefaultColor() {
-    const button = document.getElementById('color-button');
-    button.style.backgroundColor = "#261b7c";
+function buttonDefaultColor(bookId) {
+    const button = document.getElementById(`btn-${bookId}`);
+    if (button) button.style.backgroundColor = "#261b7c";
 }

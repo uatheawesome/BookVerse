@@ -54,10 +54,10 @@ button:hover {
     gap: 20px;
 }
 
-#color-button {
+.color-button {
     background-color: #261b7c;
 }
 
-#color-button:hover {
+.color-button:hover {
     background-color: #d4b21c;
 }
